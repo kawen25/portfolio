@@ -9,34 +9,240 @@ body {
 
   /* Reset <ul> and <li> */
 nav ul {
-  display: contents;
+    display: contents;
 }
 
 nav ul li {
-  display: contents;
+    display: contents;
 }
 
-/* Style the navigation bar */
+:root {
+  --color-accent: oklch(65% 50% 0); /* Define the accent color */
+}
+
+html {
+  accent-color: var(--color-accent); /* Set the global accent color */
+}
+
 nav {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
-  background-color: #fafafa;
-  padding: 1rem;
-  border-bottom: 1px solid #ddd;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff;
+  padding: 0.5em 1em;
+  margin-bottom: 1em;
+  border-bottom: 1px solid oklch(80% 3% 200); /* Subtle gray border */
 }
 
-/* Style the links */
 nav a {
+  flex: 1;
+  text-align: center;
   text-decoration: none;
-  color: #333;
-  padding: 0.5rem 1rem;
-  display: inline-block;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  color: inherit;
+  padding: 0.5em;
+}
+
+nav a.current {
+  border-bottom: 0.4em solid oklch(85% 2.5% 200);
+  padding-bottom: 0.1em;
 }
 
 nav a:hover {
-  background-color: #f0f0f0;
-  color: #007BFF;
+  border-bottom: 0.4em solid var(--color-accent);
+  background-color: oklch(from var(--color-accent) 95% 5% h);
+  transition: background-color 0.3s ease, border-bottom 0.3s ease;
+}
+
+form {
+  display: grid; /* Enables grid layout */
+  grid-template-columns: auto 1fr; /* Two columns: one auto-width and one flexible */
+  gap: 1em; /* Adds spacing between rows */
+  max-width: 600px; /* Limits the width of the form */
+  margin: 0 auto; /* Centers the form horizontally */
+  padding: 1em;
+  border: 1px solid #ddd; /* Adds a light border */
+  border-radius: 8px; /* Rounds the corners */
+  background-color: #f9f9f9; /* Light background for contrast */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+}
+
+/* Style for labels */
+form label {
+  display: grid; /* Makes labels grid containers */
+  grid-template-columns: subgrid; /* Makes label align with the form grid */
+  grid-column: 1 / -1; /* Ensures labels span the entire width */
+  font-weight: bold;
+  margin-bottom: 0.2em;
+}
+
+/* Style for input fields and textarea */
+form input, form textarea {
+  font: inherit; /* Inherits font properties */
+  width: 100%; /* Makes input fields and textarea take full width */
+  box-sizing: border-box; /* Includes padding and border in the width */
+  padding: 0.5em;
+  border: 1px solid #ccc; /* Subtle border */
+  border-radius: 4px; /* Rounds input corners */
+  transition: border-color 0.3s;
+}
+
+form input:focus, form textarea:focus {
+  border-color: var(--color-accent, #007acc); /* Highlight border on focus */
+  outline: none; /* Removes default focus outline */
+}
+
+/* Style for the submit button */
+form button {
+  grid-column: 1 / -1; /* Spans the entire row */
+  padding: 0.7em 1em;
+  background-color: var(--color-accent, #007acc); /* Accent color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+form button:hover {
+  background-color: #990244; /* Darker shade of the accent color */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* Adds a shadow on hover */
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr)); /* Flexible columns */
+  gap: 1em; /* Spacing between grid items */
+}
+
+.projects article {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3; /* Makes each article span three rows */
+}
+
+.projects h2 {
+  font-size: 2.5em; /* Adjust size */
+  margin: 0.5em 0;
+}
+
+.projects img {
+  width: 100%; /* Makes the image responsive */
+  object-fit: cover; /* Ensures images are cropped nicely */
+}
+
+h1 {
+  font-size: 4em; /* 400% the size of the body text */
+  line-height: 1.1;
+}
+
+h2, h3, h4, h5, h6 {
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+section {
+  background-color: #fff; /* White background for sections */
+  margin-bottom: 1.5rem; /* Space between sections */
+  padding: 1rem 1.5rem; /* Internal padding */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Section Headers */
+section header h2 {
+  font-size: 1.8rem; /* Larger, more prominent headers */
+  margin-bottom: 0.5rem; /* Space below the header */
+  border-bottom: 2px solid oklch(80% 3% 200); /* Subtle gray underline */
+  padding-bottom: 0.25rem; /* Adds space between text and underline */
+  color: black; /* Accent color for headers */
+}
+
+/* Articles Inside Sections */
+article {
+  margin-bottom: 1.5rem; /* Space between articles */
+}
+
+article h3 {
+  font-size: 1.4rem; /* Slightly smaller than section headers */
+  margin-bottom: 0.2rem; /* Space below job title */
+  color: black; /* Darker neutral color */
+}
+
+article time {
+  font-size: 0.9rem; /* Smaller text for dates */
+  color: oklch(60% 5% 200); /* Muted gray */
+  display: block; /* Ensures dates are on their own line */
+  margin-bottom: 0.5rem; /* Space between time and description */
+}
+
+article p {
+  margin: 0.5rem 0; /* Adds vertical spacing for paragraphs */
+  line-height: 1.5; /* Improves readability */
+}
+
+/* Lists Inside Sections */
+ul {
+  margin: 0.5rem 0 0 1.5rem; /* Aligns lists neatly */
+  padding: 0; /* Removes padding */
+  list-style-type: disc; /* Uses bullets */
+  line-height: 1.5; /* Improves readability */
+}
+
+/* Contact Info in the Header */
+p {
+  text-align: left; /* Aligns paragraphs to the left */
+  margin-bottom: 1.5rem; /* Space below each paragraph */
+  font-size: 1rem;
+  color: black; /* Neutral color for text */
+  line-height: 1.6; /* Improves readability */
+}
+
+p a {
+  color: var(--color-accent); /* Accent color for links */
+  text-decoration: none; /* No underline */
+}
+
+p a:hover {
+  text-decoration: underline; /* Adds underline on hover */
+}
+
+/* Skills Section */
+section#skills ul {
+  display: flex; /* Aligns skills in a row */
+  flex-wrap: wrap; /* Allows wrapping if content overflows */
+  gap: 1rem; /* Spacing between items */
+}
+
+section#skills ul li {
+  background-color: oklch(95% 10% 100); /* Light background for skills */
+  padding: 0.5rem 1rem; /* Adds space around each skill */
+  border-radius: 5px; /* Rounds the edges */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Extracurricular Activities */
+section#extracurricular ul {
+  padding-left: 1.5rem; /* Indent list items */
+  margin-top: 0.5rem;
+}
+
+section#extracurricular ul li strong {
+  color:black; /* Highlight activity names */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  section {
+      padding: 1rem; /* Smaller padding for mobile */
+  }
+
+  section header h2 {
+      font-size: 1.5rem; /* Slightly smaller headers on mobile */
+  }
+
+  article h3 {
+      font-size: 1.2rem; /* Smaller article titles */
+  }
 }
