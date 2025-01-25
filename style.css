@@ -1,30 +1,12 @@
-body {
-    font: 100%/1.5 system-ui;
-    max-width: 100ch; 
-    margin: 0 auto;  
-    padding: 1rem;   
-    line-height: 1.6; 
-    font-family: Arial, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-  }
-
-  /* Reset <ul> and <li> */
-nav ul {
-    display: contents;
-}
-
-nav ul li {
-    display: contents;
-}
-
+/* Root Theme Variables */
 :root {
-  --color-accent: oklch(65% 50% 0); /* Define the accent color */
-  color-scheme: light dark;
   --bg-light: #ffffff;
   --text-light: #000000;
   --bg-dark: #121212;
   --text-dark: #ffffff;
+
+  --accent-light: #007acc;
+  --accent-dark: #990244;
 }
 
 [data-theme="light"] {
@@ -39,24 +21,26 @@ nav ul li {
   --accent-color: var(--accent-dark);
 }
 
-
-html {
-  accent-color: var(--color-accent); /* Set the global accent color */
+/* Base Styles */
+body {
+  font: 100%/1.5 system-ui;
+  max-width: 100ch;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
+/* Navigation Bar */
 nav {
-  --border-color: oklch(50% 10% 200 / 40%);
   display: flex;
   justify-content: space-around;
   align-items: center;
   background-color: var(--bg-color);
-  color: var(--text-color);
   padding: 0.5em 1em;
   margin-bottom: 1em;
-  border-bottom-color: var(--border-color);
-  
+  border-bottom: 2px solid var(--accent-color);
 }
-
 
 nav a {
   flex: 1;
@@ -67,59 +51,58 @@ nav a {
 }
 
 nav a.current {
-  border-bottom: 0.4em solid oklch(85% 2.5% 200);
+  border-bottom: 0.4em solid var(--accent-color);
   padding-bottom: 0.1em;
 }
 
 nav a:hover {
-  border-bottom: 0.4em solid var(--color-accent);
+  border-bottom: 0.4em solid var(--accent-color);
   background-color: var(--bg-color);
   transition: background-color 0.3s ease, border-bottom 0.3s ease;
 }
 
+/* Form Styles */
 form {
-  display: grid; /* Enables grid layout */
-  grid-template-columns: auto 1fr; /* Two columns: one auto-width and one flexible */
-  gap: 1em; /* Adds spacing between rows */
-  max-width: 600px; /* Limits the width of the form */
-  margin: 0 auto; /* Centers the form horizontally */
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1em;
+  max-width: 600px;
+  margin: 0 auto;
   padding: 1em;
-  border: 1px solid #ddd; /* Adds a light border */
-  border-radius: 8px; /* Rounds the corners */
-  background-color: #f9f9f9; /* Light background for contrast */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+  border: 1px solid var(--accent-color);
+  border-radius: 8px;
+  background-color: var(--bg-color);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Style for labels */
 form label {
-  display: grid; /* Makes labels grid containers */
-  grid-template-columns: subgrid; /* Makes label align with the form grid */
-  grid-column: 1 / -1; /* Ensures labels span the entire width */
   font-weight: bold;
   margin-bottom: 0.2em;
 }
 
-/* Style for input fields and textarea */
-form input, form textarea {
-  font: inherit; /* Inherits font properties */
-  width: 100%; /* Makes input fields and textarea take full width */
-  box-sizing: border-box; /* Includes padding and border in the width */
+form input,
+form textarea {
+  font: inherit;
+  width: 100%;
+  box-sizing: border-box;
   padding: 0.5em;
-  border: 1px solid #ccc; /* Subtle border */
-  border-radius: 4px; /* Rounds input corners */
+  border: 1px solid var(--accent-color);
+  border-radius: 4px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   transition: border-color 0.3s;
 }
 
-form input:focus, form textarea:focus {
-  border-color: var(--color-accent, #007acc); /* Highlight border on focus */
-  outline: none; /* Removes default focus outline */
+form input:focus,
+form textarea:focus {
+  border-color: var(--accent-color);
+  outline: none;
 }
 
-/* Style for the submit button */
 form button {
-  grid-column: 1 / -1; /* Spans the entire row */
+  grid-column: 1 / -1;
   padding: 0.7em 1em;
-  background-color: var(--color-accent, #007acc); /* Accent color */
+  background-color: var(--accent-color);
   color: white;
   border: none;
   border-radius: 4px;
@@ -130,148 +113,43 @@ form button {
 }
 
 form button:hover {
-  background-color: #990244; /* Darker shade of the accent color */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* Adds a shadow on hover */
+  background-color: var(--accent-dark);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
+/* Projects Grid */
 .projects {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr)); /* Flexible columns */
-  gap: 1em; /* Spacing between grid items */
-}
-
-.projects article {
-  display: grid;
-  grid-template-rows: subgrid;
-  grid-row: span 3; /* Makes each article span three rows */
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  gap: 1em;
 }
 
 .projects h2 {
-  font-size: 2.5em; /* Adjust size */
+  font-size: 2.5em;
   margin: 0.5em 0;
 }
 
 .projects img {
-  width: 100%; /* Makes the image responsive */
-  object-fit: cover; /* Ensures images are cropped nicely */
-}
-
-h1 {
-  font-size: 4em; /* 400% the size of the body text */
-  line-height: 1.1;
-}
-
-h2, h3, h4, h5, h6 {
-  line-height: 1.1;
-  text-wrap: balance;
-}
-
-section {
-  background-color: #fff; /* White background for sections */
-  margin-bottom: 1.5rem; /* Space between sections */
-  padding: 1rem 1.5rem; /* Internal padding */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-}
-
-/* Section Headers */
-section header h2 {
-  font-size: 1.8rem; /* Larger, more prominent headers */
-  margin-bottom: 0.5rem; /* Space below the header */
-  border-bottom: 2px solid oklch(80% 3% 200); /* Subtle gray underline */
-  padding-bottom: 0.25rem; /* Adds space between text and underline */
-  color: black; /* Accent color for headers */
-}
-
-/* Articles Inside Sections */
-article {
-  margin-bottom: 1.5rem; /* Space between articles */
-}
-
-article h3 {
-  font-size: 1.4rem; /* Slightly smaller than section headers */
-  margin-bottom: 0.2rem; /* Space below job title */
-  color: black; /* Darker neutral color */
-}
-
-article time {
-  font-size: 0.9rem; /* Smaller text for dates */
-  color: oklch(60% 5% 200); /* Muted gray */
-  display: block; /* Ensures dates are on their own line */
-  margin-bottom: 0.5rem; /* Space between time and description */
-}
-
-article p {
-  margin: 0.5rem 0; /* Adds vertical spacing for paragraphs */
-  line-height: 1.5; /* Improves readability */
-}
-
-/* Lists Inside Sections */
-ul {
-  margin: 0.5rem 0 0 1.5rem; /* Aligns lists neatly */
-  padding: 0; /* Removes padding */
-  list-style-type: disc; /* Uses bullets */
-  line-height: 1.5; /* Improves readability */
-}
-
-/* Contact Info in the Header */
-p {
-  text-align: left; /* Aligns paragraphs to the left */
-  margin-bottom: 1.5rem; /* Space below each paragraph */
-  font-size: 1rem;
-  color: black; /* Neutral color for text */
-  line-height: 1.6; /* Improves readability */
-}
-
-p a {
-  color: var(--color-accent); /* Accent color for links */
-  text-decoration: none; /* No underline */
-}
-
-p a:hover {
-  text-decoration: underline; /* Adds underline on hover */
-}
-
-/* Skills Section */
-section#skills ul {
-  display: flex; /* Aligns skills in a row */
-  flex-wrap: wrap; /* Allows wrapping if content overflows */
-  gap: 1rem; /* Spacing between items */
-}
-
-section#skills ul li {
-  background-color: oklch(95% 10% 100); /* Light background for skills */
-  padding: 0.5rem 1rem; /* Adds space around each skill */
-  border-radius: 5px; /* Rounds the edges */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-/* Extracurricular Activities */
-section#extracurricular ul {
-  padding-left: 1.5rem; /* Indent list items */
-  margin-top: 0.5rem;
-}
-
-section#extracurricular ul li strong {
-  color:black; /* Highlight activity names */
+  width: 100%;
+  object-fit: cover;
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   section {
-      padding: 1rem; /* Smaller padding for mobile */
+    padding: 1rem;
   }
 
   section header h2 {
-      font-size: 1.5rem; /* Slightly smaller headers on mobile */
+    font-size: 1.5rem;
   }
 
   article h3 {
-      font-size: 1.2rem; /* Smaller article titles */
+    font-size: 1.2rem;
   }
 }
 
-
+/* Color Scheme Dropdown */
 .color-scheme {
   position: absolute;
   top: 1rem;
@@ -283,4 +161,3 @@ section#extracurricular ul li strong {
 .color-scheme select {
   font-family: inherit;
 }
-

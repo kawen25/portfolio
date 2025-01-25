@@ -1,20 +1,22 @@
 console.log('IT’S ALIVE!');
 
+// Utility Function to Select Elements
 function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
 }
 
-// Get all navigation links
+// Get All Navigation Links
 const navLinks = $$("nav a");
 
-// Find the link to the current page
+// Find the Current Page Link
 const currentLink = navLinks.find(
   (a) => a.host === location.host && a.pathname === location.pathname
 );
 
-// Add the 'current' class to the current page link, if it exists
+// Highlight the Current Page
 currentLink?.classList.add('current');
 
+// Pages for Navigation
 let pages = [
   { url: '', title: 'Home' },
   { url: 'projects/', title: 'Projects' },
@@ -27,38 +29,33 @@ const ARE_WE_HOME = document.documentElement.classList.contains('home');
 let nav = document.createElement('nav');
 document.body.prepend(nav);
 
+// Generate Navigation Links
 for (let p of pages) {
   let url = p.url;
   let title = p.title;
 
-  // Adjust relative URLs if not on the home page
   url = !ARE_WE_HOME && !url.startsWith('http') ? '../' + url : url;
 
-  // Create the link element
   let a = document.createElement('a');
   a.href = url;
   a.textContent = title;
 
-  // Highlight the current page
   a.classList.toggle(
     'current',
     a.host === location.host && a.pathname === location.pathname
   );
 
-  // Open external links in a new tab
   a.target = a.host !== location.host ? '_blank' : '_self';
-
-  // Append the link to the nav
   nav.append(a);
 }
 
+// Add Theme Selector
 document.body.insertAdjacentHTML(
   'afterbegin',
   `
   <label class="color-scheme">
     Theme:
     <select>
-      <option value="light dark">Automatic</option>
       <option value="light">Light</option>
       <option value="dark">Dark</option>
     </select>
@@ -66,15 +63,16 @@ document.body.insertAdjacentHTML(
   `
 );
 
+// Handle Theme Change
 const select = document.querySelector('.color-scheme select');
 
 select.addEventListener('input', function (event) {
   const colorScheme = event.target.value;
   document.documentElement.setAttribute('data-theme', colorScheme);
-  localStorage.colorScheme = colorScheme; // Save preference
+  localStorage.colorScheme = colorScheme; // Save Preference
 });
 
-// Load saved preference on page load
-const savedColorScheme = localStorage.colorScheme || 'light dark';
+// Load Saved Theme on Page Load
+const savedColorScheme = localStorage.colorScheme || 'light';
 document.documentElement.setAttribute('data-theme', savedColorScheme);
 select.value = savedColorScheme;
