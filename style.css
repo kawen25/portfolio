@@ -5,8 +5,8 @@
   --bg-dark: #121212;
   --text-dark: #ffffff;
 
-  --accent-light: #007acc;
-  --accent-dark: #990244;
+  --accent-light: oklch(50% 10% 200 / 40%);;
+  --accent-dark: oklch(50% 10% 200 / 40%);;
 }
 
 [data-theme="light"] {
