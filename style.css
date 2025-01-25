@@ -30,11 +30,13 @@ nav ul li {
 [data-theme="light"] {
   --bg-color: var(--bg-light);
   --text-color: var(--text-light);
+  --accent-color: var(--accent-light);
 }
 
 [data-theme="dark"] {
   --bg-color: var(--bg-dark);
   --text-color: var(--text-dark);
+  --accent-color: var(--accent-dark);
 }
 
 
@@ -71,7 +73,7 @@ nav a.current {
 
 nav a:hover {
   border-bottom: 0.4em solid var(--color-accent);
-  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
+  background-color: var(--bg-color);
   transition: background-color 0.3s ease, border-bottom 0.3s ease;
 }
 
