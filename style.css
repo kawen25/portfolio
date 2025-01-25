@@ -246,3 +246,24 @@ section#extracurricular ul li strong {
       font-size: 1.2rem; /* Smaller article titles */
   }
 }
+
+:root {
+  color-scheme: light dark;
+}
+
+nav {
+  --border-color: oklch(50% 10% 200 / 40%);
+  border-bottom-color: var(--border-color);
+}
+
+.color-scheme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 80%;
+  font-family: inherit;
+}
+
+.color-scheme select {
+  font-family: inherit;
+}
