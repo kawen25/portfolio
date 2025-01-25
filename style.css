@@ -253,13 +253,6 @@ section#extracurricular ul li strong {
 }
 
 
-
-/* Optional: Fix hover background colors */
-nav a:hover {
-  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
-}
-
-
 .color-scheme {
   position: absolute;
   top: 1rem;
