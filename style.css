@@ -21,6 +21,21 @@
   --accent-color: var(--accent-dark);
 }
 
+/* Default Theme: System Preference */
+[data-theme="auto"] {
+  --bg-color: var(--bg-light);
+  --text-color: var(--text-light);
+  --accent-color: var(--accent-light);
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-theme="auto"] {
+    --bg-color: var(--bg-dark);
+    --text-color: var(--text-dark);
+    --accent-color: var(--accent-dark);
+  }
+}
+
 /* Base Styles */
 body {
   font: 100%/1.5 system-ui;
@@ -76,6 +91,9 @@ form {
 }
 
 form label {
+  display: grid; /* Makes labels grid containers */
+  grid-template-columns: subgrid; /* Makes label align with the form grid */
+  grid-column: 1 / -1; /* Ensures labels span the entire width */
   font-weight: bold;
   margin-bottom: 0.2em;
 }

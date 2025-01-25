@@ -56,6 +56,7 @@ document.body.insertAdjacentHTML(
   <label class="color-scheme">
     Theme:
     <select>
+      <option value="auto">Automatic</option>
       <option value="light">Light</option>
       <option value="dark">Dark</option>
     </select>
@@ -73,6 +74,13 @@ select.addEventListener('input', function (event) {
 });
 
 // Load Saved Theme on Page Load
-const savedColorScheme = localStorage.colorScheme || 'light';
+const savedColorScheme = localStorage.colorScheme || 'auto';
 document.documentElement.setAttribute('data-theme', savedColorScheme);
 select.value = savedColorScheme;
+
+// Ensure "Automatic" Works on System Preference Change
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+  if (localStorage.colorScheme === 'auto') {
+    document.documentElement.setAttribute('data-theme', 'auto');
+  }
+});
