@@ -5,6 +5,8 @@ body {
     padding: 1rem;   
     line-height: 1.6; 
     font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
   }
 
   /* Reset <ul> and <li> */
@@ -19,6 +21,20 @@ nav ul li {
 :root {
   --color-accent: oklch(65% 50% 0); /* Define the accent color */
   color-scheme: light dark;
+  --bg-light: #ffffff;
+  --text-light: #000000;
+  --bg-dark: #121212;
+  --text-dark: #ffffff;
+}
+
+[data-theme="light"] {
+  --bg-color: var(--bg-light);
+  --text-color: var(--text-light);
+}
+
+[data-theme="dark"] {
+  --bg-color: var(--bg-dark);
+  --text-color: var(--text-dark);
 }
 
 
@@ -31,7 +47,8 @@ nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #fff;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   padding: 0.5em 1em;
   margin-bottom: 1em;
   border-bottom-color: var(--border-color);
@@ -43,7 +60,7 @@ nav a {
   flex: 1;
   text-align: center;
   text-decoration: none;
-  color: inherit;
+  color: var(--text-color);
   padding: 0.5em;
 }
 

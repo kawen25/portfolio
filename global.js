@@ -70,13 +70,11 @@ const select = document.querySelector('.color-scheme select');
 
 select.addEventListener('input', function (event) {
   const colorScheme = event.target.value;
-  document.documentElement.style.setProperty('color-scheme', colorScheme);
+  document.documentElement.setAttribute('data-theme', colorScheme);
   localStorage.colorScheme = colorScheme; // Save preference
 });
 
 // Load saved preference on page load
-const savedColorScheme = localStorage.colorScheme;
-if (savedColorScheme) {
-  document.documentElement.style.setProperty('color-scheme', savedColorScheme);
-  select.value = savedColorScheme; // Update dropdown to match
-}
+const savedColorScheme = localStorage.colorScheme || 'light dark';
+document.documentElement.setAttribute('data-theme', savedColorScheme);
+select.value = savedColorScheme;
