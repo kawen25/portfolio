@@ -75,6 +75,14 @@ select.addEventListener('input', function (event) {
   localStorage.colorScheme = colorScheme; // Save Preference
 });
 
+function applyTheme(colorScheme) {
+  document.documentElement.setAttribute('data-theme', colorScheme);
+  if (colorScheme === 'auto') {
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', systemTheme);
+  }
+}
+
 // Load Saved Theme on Page Load
 const savedColorScheme = localStorage.colorScheme || 'auto';
 document.documentElement.setAttribute('data-theme', savedColorScheme);
