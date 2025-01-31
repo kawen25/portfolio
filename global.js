@@ -25,9 +25,11 @@ let pages = [
   { url: 'https://kawen25.github.io/portfolio', title: 'GitHub' },
 ];
 
-const ARE_WE_HOME = document.documentElement.classList.contains('home');
 let nav = document.createElement('nav');
 document.body.prepend(nav);
+
+const ARE_WE_HOME = document.documentElement.classList.contains('home');
+
 
 // Generate Navigation Links
 for (let p of pages) {

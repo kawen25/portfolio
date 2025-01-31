@@ -1,5 +1,5 @@
 /* Root Theme Variables */
-:root {
+/*:root {
   --bg-light: #ffffff;
   --text-light: #000000;
   --bg-dark: #121212;
@@ -20,9 +20,10 @@
   --text-color: var(--text-dark);
   --accent-color: var(--accent-dark);
 }
+*/
 
 /* Default Theme: System Preference */
-[data-theme="auto"] {
+/*[data-theme="auto"] {
   --bg-color: var(--bg-light);
   --text-color: var(--text-light);
   --accent-color: var(--accent-light);
@@ -34,45 +35,57 @@
     --text-color: var(--text-dark);
     --accent-color: var(--accent-dark);
   }
-}
+} /*
+
 
 /* Base Styles */
+
+html {
+  color-scheme: light dark;
+}
+
 body {
   font: 100%/1.5 system-ui;
   max-width: 100ch;
   margin: 0 auto;
-  padding: 1rem;
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  padding: 0 1rem;
+  /*background-color: var(--bg-color);
+  color: var(--text-color);*/
 }
 
 /* Navigation Bar */
+nav ul {
+  display: contents;
+}
+
+nav ul li {
+  display: contents;
+}
+
 nav {
   display: flex;
-  justify-content: space-around;
   align-items: center;
-  background-color: var(--bg-color);
   padding: 0.5em 1em;
   margin-bottom: 1em;
-  border-bottom: 2px solid var(--accent-color);
+  border-bottom: 2px solid oklch(80% 3% 200);
 }
 
 nav a {
   flex: 1;
   text-align: center;
   text-decoration: none;
-  color: var(--text-color);
+  color: inherit;
   padding: 0.5em;
 }
 
-nav a.current {
-  border-bottom: 0.4em solid var(--accent-color);
+ nav a.current {
+  border-bottom: 0.4em solid oklch(80% 3% 200);
   padding-bottom: 0.1em;
 }
 
 nav a:hover {
   border-bottom: 0.4em solid var(--accent-color);
-  background-color: var(--bg-color);
+  background-color: 0.4em solid var(--accent-color);
   transition: background-color 0.3s ease, border-bottom 0.3s ease;
 }
 
@@ -83,11 +96,12 @@ form {
   gap: 1em;
   max-width: 600px;
   margin: 0 auto;
-  padding: 1em;
+  /*padding: 1em;
   border: 1px solid var(--accent-color);
   border-radius: 8px;
   background-color: var(--bg-color);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  */
 }
 
 form label {
@@ -98,7 +112,7 @@ form label {
   margin-bottom: 0.2em;
 }
 
-form input,
+/*form input,
 form textarea {
   font: inherit;
   width: 100%;
@@ -116,10 +130,10 @@ form textarea:focus {
   border-color: var(--accent-color);
   outline: none;
 }
-
+*/
 form button {
   grid-column: 1 / -1;
-  padding: 0.7em 1em;
+  /*padding: 0.7em 1em;
   background-color: var(--accent-color);
   color: white;
   border: none;
@@ -127,7 +141,7 @@ form button {
   cursor: pointer;
   font-weight: bold;
   text-transform: uppercase;
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition: background-color 0.3s, box-shadow 0.3s; */
 }
 
 form button:hover {
@@ -167,8 +181,10 @@ form button:hover {
   }
 }
 
+
+
 /* Color Scheme Dropdown */
-.color-scheme {
+/*.color-scheme {
   position: absolute;
   top: 1rem;
   right: 1rem;
@@ -177,5 +193,5 @@ form button:hover {
 }
 
 .color-scheme select {
-  font-family: inherit;
-}
+  font-family: inherit; 
+} */
