@@ -71,10 +71,11 @@ const select = document.querySelector('.color-scheme select');
 
 select.addEventListener('input', function (event) {
   const colorScheme = event.target.value;
-  document.documentElement.setAttribute('data-theme', colorScheme);
+  applyTheme(colorScheme);
   localStorage.colorScheme = colorScheme; // Save Preference
 });
 
+// Apply the selected theme
 function applyTheme(colorScheme) {
   document.documentElement.setAttribute('data-theme', colorScheme);
   if (colorScheme === 'auto') {
@@ -85,12 +86,13 @@ function applyTheme(colorScheme) {
 
 // Load Saved Theme on Page Load
 const savedColorScheme = localStorage.colorScheme || 'auto';
-document.documentElement.setAttribute('data-theme', savedColorScheme);
+applyTheme(savedColorScheme);
 select.value = savedColorScheme;
 
 // Ensure "Automatic" Works on System Preference Change
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
   if (localStorage.colorScheme === 'auto') {
-    document.documentElement.setAttribute('data-theme', 'auto');
+    const systemTheme = event.matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', systemTheme);
   }
 });
