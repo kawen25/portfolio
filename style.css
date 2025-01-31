@@ -47,7 +47,7 @@ body {
 }
 
 img {
-  max-width: 100%; /* Ensures the image doesn't exceed its container's width */
+  max-width: 80%; /* Ensures the image doesn't exceed its container's width */
   height: auto; /* Maintains the image's aspect ratio */
   display: block; /* Removes extra space below the image */
 }
@@ -111,7 +111,7 @@ form label {
   margin-bottom: 0.2em;
 }
 
-/*form input,
+form input,
 form textarea {
   font: inherit;
   width: 100%;
@@ -129,10 +129,10 @@ form textarea:focus {
   border-color: var(--accent-color);
   outline: none;
 }
-*/
+
 form button {
   grid-column: 1 / -1;
-  /*padding: 0.7em 1em;
+  padding: 0.7em 1em;
   background-color: var(--accent-color);
   color: white;
   border: none;
@@ -140,7 +140,7 @@ form button {
   cursor: pointer;
   font-weight: bold;
   text-transform: uppercase;
-  transition: background-color 0.3s, box-shadow 0.3s; */
+  transition: background-color 0.3s, box-shadow 0.3s; 
 }
 
 form button:hover {
@@ -183,7 +183,7 @@ form button:hover {
 
 
 /* Color Scheme Dropdown */
-/*.color-scheme {
+.color-scheme {
   position: absolute;
   top: 1rem;
   right: 1rem;
@@ -193,4 +193,4 @@ form button:hover {
 
 .color-scheme select {
   font-family: inherit; 
-} */
+} 
