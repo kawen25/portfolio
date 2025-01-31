@@ -47,7 +47,7 @@ body {
 }
 
 img {
-  max-width: 80%; /* Ensures the image doesn't exceed its container's width */
+  max-width: 60%; /* Ensures the image doesn't exceed its container's width */
   height: auto; /* Maintains the image's aspect ratio */
   display: block; /* Removes extra space below the image */
 }
