@@ -14,10 +14,4 @@ import { fetchJSON, renderProjects } from '../global.js';
     console.error('Projects title element not found!');
   }
 
-  if (projectsContainer) {
-    renderProjects(projects, projectsContainer, 'h2');
-  } else {
-    console.error('Projects container element not found!');
-  }
-
 })();
