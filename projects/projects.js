@@ -8,5 +8,16 @@ import { fetchJSON, renderProjects } from '../global.js';
   // Update the title with the number of projects
   projectsTitle.textContent += ` (${projects.length} projects)`;
 
-  renderProjects(projects, projectsContainer, 'h2');
+  if (projectsTitle) {
+    projectsTitle.textContent += ` (${projects.length} projects)`;
+  } else {
+    console.error('Projects title element not found!');
+  }
+
+  if (projectsContainer) {
+    renderProjects(projects, projectsContainer, 'h2');
+  } else {
+    console.error('Projects container element not found!');
+  }
+
 })();

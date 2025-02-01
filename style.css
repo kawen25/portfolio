@@ -95,12 +95,12 @@ form {
   gap: 1em;
   max-width: 600px;
   margin: 0 auto;
-  /*padding: 1em;
+  padding: 1em;
   border: 1px solid var(--accent-color);
   border-radius: 8px;
   background-color: var(--bg-color);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  */
+  
 }
 
 form label {
