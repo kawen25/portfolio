@@ -77,10 +77,11 @@ select.addEventListener('input', function (event) {
 
 // Apply the selected theme
 function applyTheme(colorScheme) {
-  document.documentElement.setAttribute('data-theme', colorScheme);
   if (colorScheme === 'auto') {
     const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme', systemTheme);
+  } else {
+    document.documentElement.setAttribute('data-theme', colorScheme);
   }
 }
 
