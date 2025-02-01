@@ -67,33 +67,37 @@ document.body.insertAdjacentHTML(
 );
 
 // Handle Theme Change
-const select = document.querySelector('.color-scheme select');
-
-select.addEventListener('input', function (event) {
-  const colorScheme = event.target.value;
-  applyTheme(colorScheme);
-  localStorage.colorScheme = colorScheme; // Save Preference
-});
-
-// Apply the selected theme
-function applyTheme(colorScheme) {
-  if (colorScheme === 'auto') {
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', systemTheme);
-  } else {
-    document.documentElement.setAttribute('data-theme', colorScheme);
-  }
+function setColorScheme(colorScheme) {
+  document.documentElement.style.setProperty('color-scheme', colorScheme);
+  localStorage.colorScheme = colorScheme;
 }
 
-// Load Saved Theme on Page Load
-const savedColorScheme = localStorage.colorScheme || 'auto';
-applyTheme(savedColorScheme);
-select.value = savedColorScheme;
+const select = document.querySelector(".color-scheme select");
 
-// Ensure "Automatic" Works on System Preference Change
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
-  if (localStorage.colorScheme === 'auto') {
-    const systemTheme = event.matches ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', systemTheme);
+if (localStorage.colorScheme) {
+  setColorScheme(localStorage.colorScheme);
+  select.value = localStorage.colorScheme;
+} else {
+  setColorScheme('auto');
+  select.value = 'auto';
+}
+
+select.addEventListener('input', function (event) {
+  console.log('color scheme changed to', event.target.value);
+  setColorScheme(event.target.value);
+});
+
+const form = document.querySelector("form[action = 'mailto: kawen@ucsd.edu']");
+
+form?.addEventListener('submit', function (event) {
+  event.preventDefault();
+
+  let data = new FormData(form);
+  let url = form.action + '?';
+
+  for (let [name, value] of data ){
+    console.log(name, encodeURIComponent(value));
+    url += `${encodeURIComponent(name)}=${encodeURICompondnet(value)}&`;
   }
+  location.href = url;
 });
