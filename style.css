@@ -209,3 +209,13 @@ form button:hover {
 #profile-stats dd {
   grid-row: 2; /* Place all <dd> elements in the second row */
 }
+
+.project-details {
+  margin-top: 1em; /* Add space between the image and details */
+}
+
+.project-year {
+  font-size: 0.9em; /* Smaller font size for the year */
+  color: #666; /* Gray color for the year */
+  margin-top: 0.5em; /* Add space between the description and year */
+}
