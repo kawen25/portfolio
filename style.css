@@ -219,3 +219,10 @@ form button:hover {
   color: #666; /* Gray color for the year */
   margin-top: 0.5em; /* Add space between the description and year */
 }
+
+#projects-pie-plot {
+  max-width: 20em;
+  margin-block: 2em;
+
+  overflow: visible;
+}
