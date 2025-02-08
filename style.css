@@ -228,11 +228,12 @@ form button:hover {
 
 /* Legend styling */
 ul.legend {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
   gap: 10px;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-accent);
   border-radius: 5px;
 }
 
@@ -242,7 +243,7 @@ ul.legend li {
   gap: 8px;
 }
 
-ul.legend li.swatch {
+ul.legend li .swatch {
   display: inline-block;
   width: 16px;
   height: 16px;
