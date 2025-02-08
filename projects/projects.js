@@ -23,7 +23,7 @@ import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm";
   });
   
 
-let data = [1, 2];
+let data = [1, 2, 3, 4, 5, 5];
 let colors = ["gold", "purple"];
 
 let sliceGenerator = d3.pie();
