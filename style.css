@@ -227,7 +227,7 @@ form button:hover {
 }
 
 /* Legend styling */
-.legend {
+ul.legend {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
   gap: 10px;
@@ -236,13 +236,13 @@ form button:hover {
   border-radius: 5px;
 }
 
-.legend li {
+ul.legend li {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.swatch {
+ul.legend li .swatch {
   display: inline-block;
   width: 16px;
   height: 16px;
