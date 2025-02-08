@@ -1,6 +1,13 @@
 import { fetchJSON, renderProjects } from '../global.js';
 
+let projects = [];
+async function loadProjects() {
   const projects = await fetchJSON('../lib/projects.json');
+  renderProjects(projects, document.querySelector('.projects'), 'h2');
+  renderPieChart(projects);
+}
+document.addEventListener("DOMContentLoaded", loadProjects);
+
   const projectsContainer = document.querySelector('.projects');
   const projectsTitle = document.querySelector('.projects-title');
 
