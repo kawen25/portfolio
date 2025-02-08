@@ -86,9 +86,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             if (selectedIndex !== -1) {
                 let selectedYear = dataGiven[selectedIndex].label;
-                let filteredProjects = projects.filter((p) => 
-                  p.year === selectedYear && Object.values(p).join("\n").toLowerCase().includes(query)
-              );
+                let filteredProjects = projectsGiven.filter((p) => p.year === selectedYear);
                 renderProjects(filteredProjects, projectsContainer, "h2");
             } else {
                 renderProjects(projects, projectsContainer, "h2");
@@ -123,11 +121,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     updateTitle(projects.length);
 
     searchInput.addEventListener("input", (event) => {
-      let filteredProjects = projects.filter((p) => {
-        let matchesSearch = Object.values(p).join("\n").toLowerCase().includes(query);
-        let matchesYear = selectedIndex === -1 || p.year === data[selectedIndex]?.label;
-        return matchesSearch && matchesYear;
-    });
+        let filteredProjects = setQuery(event.target.value);
         renderProjects(filteredProjects, projectsContainer, "h2");
         let newData = recalculate(filteredProjects);
         let newSliceGenerator = d3.pie().value((d) => d.value);
