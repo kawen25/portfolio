@@ -249,3 +249,13 @@ form button:hover {
   background-color: var(--color);
   border-radius: 50%;
 }
+
+path {
+  cursor: pointer;
+  transition: 300ms;
+}
+
+svg:has(path:hover) path:not(:hover) {
+  opacity: 0.5;
+}
+
