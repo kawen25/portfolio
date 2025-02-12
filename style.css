@@ -268,3 +268,33 @@ svg {
   max-width: 20em;    
   flex-shrink: 0;     
 }
+
+.stats {
+  margin-top: 20px;
+}
+
+#stats dl {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+  gap: 10px; /* Space between items */
+}
+
+#stats dt {
+  grid-row: 1; /* Place all <dt> elements in the first row */
+  font-weight: bold;
+}
+
+#stats dd {
+  grid-row: 2; /* Place all <dd> elements in the second row */
+}
+
+.gridlines line {
+  stroke: lightgray; 
+  stroke-opacity: 0.5; 
+  stroke-dasharray: 4 4; 
+}
+
+.gridlines path {
+  stroke: lightgray;
+  stroke-opacity: 0.5;
+}
