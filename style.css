@@ -189,11 +189,15 @@ form button:hover {
   right: 1rem;
   font-size: 80%;
   font-family: inherit;
+  display: flex;
+  align-items: center;
 }
 
 .color-scheme select {
   font-family: inherit; 
+  margin-left: 5px;
 } 
+
 
 #profile-stats dl {
   display: grid;
