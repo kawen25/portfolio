@@ -370,3 +370,32 @@ svg {
   width: 100%;
   max-width: none;
 }
+
+#language-breakdown {
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* Adjust spacing between sections */
+  font-family: monospace; /* Matches the font style */
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.language {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align the text */
+}
+
+.lang-name {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.lines {
+  font-size: 1.1em;
+}
+
+.percentage {
+  font-size: 1em;
+  opacity: 0.8; /* Slightly lighter text */
+}

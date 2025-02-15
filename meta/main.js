@@ -95,7 +95,7 @@ async function loadData() {
     .attr('viewBox', `0 0 ${width} ${height}`)
     .style('overflow', 'visible');
 
-    const xScale = d3
+    xScale = d3
     .scaleTime()
     .domain(d3.extent(commits, (d) => d.datetime))
     .range([0, width])
@@ -287,8 +287,11 @@ async function loadData() {
       const formatted = d3.format('.1~%')(proportion);
   
       container.innerHTML += `
-              <dt>${language}</dt>
-              <dd>${count} lines (${formatted})</dd>
+        <div class="language">
+          <div class="lang-name">${language}</div>
+          <div class="lines">${count} lines</div>
+          <div class="percentage">${formatted}</div>
+        </div>
           `;
     }
   
