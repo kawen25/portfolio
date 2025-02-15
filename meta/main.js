@@ -1,5 +1,7 @@
 let data = [];
 let commits = [];
+let xScale;
+let yScale;
 
 async function loadData() {
     data = await d3.csv('loc.csv', (row) => ({
@@ -82,7 +84,7 @@ async function loadData() {
   }
 
   function createScatterplot() {
-    //const sortedCommits = d3.sort(commits, (d) => -d.totalLines);
+    const sortedCommits = d3.sort(commits, (d) => -d.totalLines);
     const width = 1000;
     const height = 600;
     const margin = { top: 10, right: 10, bottom: 30, left: 20 };
@@ -128,7 +130,8 @@ async function loadData() {
     gridlines.call(d3.axisLeft(yScale).tickFormat('').tickSize(-usableArea.width))
         .selectAll("line")
         .style("stroke", (d) => colorScale(d))
-        .style("stroke-opacity", 0.6);
+        .style("stroke-opacity", 0.6)
+        .style("stroke-width", 1.5);
 
       // Create the axes
     const xAxis = d3.axisBottom(xScale);
@@ -173,6 +176,7 @@ async function loadData() {
             updateTooltipContent({});
             updateTooltipVisibility(false);
         });
+      }
 
     function updateTooltipContent(commit) {
         const link = document.getElementById('commit-link');
@@ -192,7 +196,7 @@ async function loadData() {
         author.textContent = commit.author;
         lines.textContent = commit.totalLines;
       }
-  }
+  
 
   function updateTooltipVisibility(isVisible) {
     const tooltip = document.getElementById('commit-tooltip');
@@ -219,14 +223,17 @@ async function loadData() {
     updateSelection();
     updateSelectionCount();
     updateLanguageBreakdown();
+
+    if (!event.selection) return; 
+        const [[x0, y0], [x1, y1]] = event.selection;
+        console.log('Brushed area:', x0, y0, x1, y1);
   }
 
   function isCommitSelected(commit) {
     if (!brushSelection) {
       return false;
     }
-    // TODO: return true if commit is within brushSelection
-    // and false if not
+
     const min = { x: brushSelection[0][0], y: brushSelection[0][1] }; 
     const max = { x: brushSelection[1][0], y: brushSelection[1][1] }; 
     const x = xScale(commit.date); 

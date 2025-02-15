@@ -361,3 +361,12 @@ circle:hover {
   stroke-dasharray: 5 3;
   animation: marching-ants 2s linear infinite;
 }
+
+circle.selected {
+  fill: #ff6b6b;
+}
+
+svg {
+  width: 100%;
+  max-width: none;
+}
